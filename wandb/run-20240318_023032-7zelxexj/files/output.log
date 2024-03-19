@@ -1,0 +1,51 @@
+====================================
+Iteration: 1
+====================================
+/opt/conda/lib/python3.10/site-packages/transformers/generation/utils.py:1339: UserWarning: You have modified the pretrained model configuration to control generation. This is a deprecated strategy to control generation and will be removed soon, in a future version. Please use and modify the model generation configuration (see https://huggingface.co/docs/transformers/generation_strategies#default-text-generation-configuration )
+  warnings.warn(
+Finished getting adversarial prompts.
+Finished getting target responses.
+OpenAIError encountered: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+OpenAIError encountered: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+Traceback (most recent call last):
+  File "/project/language_models.py", line 105, in generate
+    client = OpenAI(
+  File "/opt/conda/lib/python3.10/site-packages/openai/_client.py", line 98, in __init__
+    raise OpenAIError(
+openai.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/project/main.py", line 188, in <module>
+    main(args)
+  File "/project/main.py", line 50, in main
+    judge_scores = judgeLM.score(adv_prompt_list,target_response_list)
+  File "/project/judges.py", line 62, in score
+    raw_outputs = self.judge_model.batched_generate(convs_list,
+  File "/project/language_models.py", line 152, in batched_generate
+    return [self.generate(conv, max_n_tokens, temperature, top_p) for conv in convs_list]
+  File "/project/language_models.py", line 152, in <listcomp>
+    return [self.generate(conv, max_n_tokens, temperature, top_p) for conv in convs_list]
+  File "/project/language_models.py", line 140, in generate
+    time.sleep(self.API_RETRY_SLEEP)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/project/language_models.py", line 105, in generate
+    client = OpenAI(
+  File "/opt/conda/lib/python3.10/site-packages/openai/_client.py", line 98, in __init__
+    raise OpenAIError(
+openai.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/project/main.py", line 188, in <module>
+    main(args)
+  File "/project/main.py", line 50, in main
+    judge_scores = judgeLM.score(adv_prompt_list,target_response_list)
+  File "/project/judges.py", line 62, in score
+    raw_outputs = self.judge_model.batched_generate(convs_list,
+  File "/project/language_models.py", line 152, in batched_generate
+    return [self.generate(conv, max_n_tokens, temperature, top_p) for conv in convs_list]
+  File "/project/language_models.py", line 152, in <listcomp>
+    return [self.generate(conv, max_n_tokens, temperature, top_p) for conv in convs_list]
+  File "/project/language_models.py", line 140, in generate
+    time.sleep(self.API_RETRY_SLEEP)
+KeyboardInterrupt

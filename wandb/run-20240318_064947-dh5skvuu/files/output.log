@@ -1,0 +1,115 @@
+====================================
+Iteration: 1
+====================================
+/opt/conda/lib/python3.10/site-packages/transformers/generation/utils.py:1339: UserWarning: You have modified the pretrained model configuration to control generation. This is a deprecated strategy to control generation and will be removed soon, in a future version. Please use and modify the model generation configuration (see https://huggingface.co/docs/transformers/generation_strategies#default-text-generation-configuration )
+  warnings.warn(
+Finished getting adversarial prompts.
+Finished getting target responses.
+Traceback (most recent call last):
+  File "/project/main.py", line 188, in <module>
+    main(args)
+  File "/project/main.py", line 50, in main
+    judge_scores = judgeLM.score(adv_prompt_list,target_response_list)
+  File "/project/judges.py", line 62, in score
+    raw_outputs = self.judge_model.batched_generate(convs_list,
+  File "/project/language_models.py", line 154, in batched_generate
+    return [self.generate(conv, max_n_tokens, temperature, top_p) for conv in convs_list]
+  File "/project/language_models.py", line 154, in <listcomp>
+    return [self.generate(conv, max_n_tokens, temperature, top_p) for conv in convs_list]
+  File "/project/language_models.py", line 117, in generate
+    response = client.chat.completions.create(
+  File "/opt/conda/lib/python3.10/site-packages/openai/_utils/_utils.py", line 275, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/conda/lib/python3.10/site-packages/openai/resources/chat/completions.py", line 667, in create
+    return self._post(
+  File "/opt/conda/lib/python3.10/site-packages/openai/_base_client.py", line 1208, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/opt/conda/lib/python3.10/site-packages/openai/_base_client.py", line 897, in request
+    return self._request(
+  File "/opt/conda/lib/python3.10/site-packages/openai/_base_client.py", line 926, in _request
+    response = self._client.send(
+  File "/opt/conda/lib/python3.10/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+  File "/opt/conda/lib/python3.10/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+  File "/opt/conda/lib/python3.10/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/opt/conda/lib/python3.10/site-packages/httpx/_client.py", line 1015, in _send_single_request
+    response = transport.handle_request(request)
+  File "/opt/conda/lib/python3.10/site-packages/httpx/_transports/default.py", line 233, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 216, in handle_request
+    raise exc from None
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 196, in handle_request
+    response = connection.handle_request(
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    return self._connection.handle_request(request)
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_sync/http11.py", line 143, in handle_request
+    raise exc
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_sync/http11.py", line 113, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_sync/http11.py", line 186, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_sync/http11.py", line 224, in _receive_event
+    data = self._network_stream.read(
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_backends/sync.py", line 126, in read
+    return self._sock.recv(max_bytes)
+  File "/opt/conda/lib/python3.10/ssl.py", line 1292, in recv
+    return self.read(buflen)
+  File "/opt/conda/lib/python3.10/ssl.py", line 1165, in read
+    return self._sslobj.read(len)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/project/main.py", line 188, in <module>
+    main(args)
+  File "/project/main.py", line 50, in main
+    judge_scores = judgeLM.score(adv_prompt_list,target_response_list)
+  File "/project/judges.py", line 62, in score
+    raw_outputs = self.judge_model.batched_generate(convs_list,
+  File "/project/language_models.py", line 154, in batched_generate
+    return [self.generate(conv, max_n_tokens, temperature, top_p) for conv in convs_list]
+  File "/project/language_models.py", line 154, in <listcomp>
+    return [self.generate(conv, max_n_tokens, temperature, top_p) for conv in convs_list]
+  File "/project/language_models.py", line 117, in generate
+    response = client.chat.completions.create(
+  File "/opt/conda/lib/python3.10/site-packages/openai/_utils/_utils.py", line 275, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/conda/lib/python3.10/site-packages/openai/resources/chat/completions.py", line 667, in create
+    return self._post(
+  File "/opt/conda/lib/python3.10/site-packages/openai/_base_client.py", line 1208, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/opt/conda/lib/python3.10/site-packages/openai/_base_client.py", line 897, in request
+    return self._request(
+  File "/opt/conda/lib/python3.10/site-packages/openai/_base_client.py", line 926, in _request
+    response = self._client.send(
+  File "/opt/conda/lib/python3.10/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+  File "/opt/conda/lib/python3.10/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+  File "/opt/conda/lib/python3.10/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/opt/conda/lib/python3.10/site-packages/httpx/_client.py", line 1015, in _send_single_request
+    response = transport.handle_request(request)
+  File "/opt/conda/lib/python3.10/site-packages/httpx/_transports/default.py", line 233, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 216, in handle_request
+    raise exc from None
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 196, in handle_request
+    response = connection.handle_request(
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    return self._connection.handle_request(request)
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_sync/http11.py", line 143, in handle_request
+    raise exc
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_sync/http11.py", line 113, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_sync/http11.py", line 186, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_sync/http11.py", line 224, in _receive_event
+    data = self._network_stream.read(
+  File "/opt/conda/lib/python3.10/site-packages/httpcore/_backends/sync.py", line 126, in read
+    return self._sock.recv(max_bytes)
+  File "/opt/conda/lib/python3.10/ssl.py", line 1292, in recv
+    return self.read(buflen)
+  File "/opt/conda/lib/python3.10/ssl.py", line 1165, in read
+    return self._sslobj.read(len)
+KeyboardInterrupt

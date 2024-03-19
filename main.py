@@ -81,7 +81,7 @@ if __name__ == '__main__':
         "--attack-model",
         default = "vicuna",
         help = "Name of attacking model.",
-        choices=["vicuna", "llama-2", "gpt-3.5-turbo", "gpt-4", "claude-instant-1","claude-2", "palm-2"]
+        choices=["vicuna", "llama-2", "gpt-35-turbo", "gpt-4", "claude-instant-1","claude-2", "palm-2"]
     )
     parser.add_argument(
         "--attack-max-n-tokens",
@@ -102,7 +102,7 @@ if __name__ == '__main__':
         "--target-model",
         default = "vicuna",
         help = "Name of target model.",
-        choices=["vicuna", "llama-2", "gpt-3.5-turbo", "gpt-4", "claude-instant-1","claude-2", "palm-2"]
+        choices=["vicuna", "llama-2", "gpt-35-turbo", "gpt-4", "claude-instant-1","claude-2", "palm-2"]
     )
     parser.add_argument(
         "--target-max-n-tokens",
@@ -117,7 +117,7 @@ if __name__ == '__main__':
         "--judge-model",
         default="gpt-3.5-turbo",
         help="Name of judge model.",
-        choices=["gpt-3.5-turbo", "gpt-4","no-judge"]
+        choices=["gpt-35-turbo", "gpt-4","no-judge"]
     )
     parser.add_argument(
         "--judge-max-n-tokens",

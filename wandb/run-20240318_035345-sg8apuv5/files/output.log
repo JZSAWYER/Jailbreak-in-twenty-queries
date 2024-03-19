@@ -1,0 +1,45 @@
+/opt/conda/lib/python3.10/site-packages/transformers/generation/utils.py:1339: UserWarning: You have modified the pretrained model configuration to control generation. This is a deprecated strategy to control generation and will be removed soon, in a future version. Please use and modify the model generation configuration (see https://huggingface.co/docs/transformers/generation_strategies#default-text-generation-configuration )
+  warnings.warn(
+====================================
+Iteration: 1
+====================================
+Traceback (most recent call last):
+  File "/project/main.py", line 188, in <module>
+    main(args)
+  File "/project/main.py", line 38, in main
+    extracted_attack_list = attackLM.get_attack(convs_list, processed_response_list)
+  File "/project/conversers.py", line 93, in get_attack
+    outputs_list = self.model.batched_generate(full_prompts_subset,
+  File "/project/language_models.py", line 39, in batched_generate
+    output_ids = self.model.generate(
+  File "/opt/conda/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/opt/conda/lib/python3.10/site-packages/transformers/generation/utils.py", line 1592, in generate
+    return self.sample(
+  File "/opt/conda/lib/python3.10/site-packages/transformers/generation/utils.py", line 2710, in sample
+    next_token_scores = logits_warper(input_ids, next_token_scores)
+  File "/opt/conda/lib/python3.10/site-packages/transformers/generation/logits_process.py", line 97, in __call__
+    scores = processor(input_ids, scores)
+  File "/opt/conda/lib/python3.10/site-packages/transformers/generation/logits_process.py", line 510, in __call__
+    indices_to_remove = scores < torch.topk(scores, top_k)[0][..., -1, None]
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/project/main.py", line 188, in <module>
+    main(args)
+  File "/project/main.py", line 38, in main
+    extracted_attack_list = attackLM.get_attack(convs_list, processed_response_list)
+  File "/project/conversers.py", line 93, in get_attack
+    outputs_list = self.model.batched_generate(full_prompts_subset,
+  File "/project/language_models.py", line 39, in batched_generate
+    output_ids = self.model.generate(
+  File "/opt/conda/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/opt/conda/lib/python3.10/site-packages/transformers/generation/utils.py", line 1592, in generate
+    return self.sample(
+  File "/opt/conda/lib/python3.10/site-packages/transformers/generation/utils.py", line 2710, in sample
+    next_token_scores = logits_warper(input_ids, next_token_scores)
+  File "/opt/conda/lib/python3.10/site-packages/transformers/generation/logits_process.py", line 97, in __call__
+    scores = processor(input_ids, scores)
+  File "/opt/conda/lib/python3.10/site-packages/transformers/generation/logits_process.py", line 510, in __call__
+    indices_to_remove = scores < torch.topk(scores, top_k)[0][..., -1, None]
+KeyboardInterrupt

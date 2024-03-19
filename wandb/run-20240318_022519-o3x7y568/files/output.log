@@ -1,0 +1,57 @@
+/opt/conda/lib/python3.10/site-packages/transformers/generation/utils.py:1339: UserWarning: You have modified the pretrained model configuration to control generation. This is a deprecated strategy to control generation and will be removed soon, in a future version. Please use and modify the model generation configuration (see https://huggingface.co/docs/transformers/generation_strategies#default-text-generation-configuration )
+  warnings.warn(
+====================================
+Iteration: 1
+====================================
+Finished getting adversarial prompts.
+Traceback (most recent call last):
+  File "/project/language_models.py", line 104, in generate
+    response = openai.Completion.create(
+  File "/opt/conda/lib/python3.10/site-packages/openai/lib/_old_api.py", line 39, in __call__
+    raise APIRemovedInV1(symbol=self._symbol)
+openai.lib._old_api.APIRemovedInV1:
+You tried to access openai.Completion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface.
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/project/main.py", line 188, in <module>
+    main(args)
+  File "/project/main.py", line 50, in main
+    judge_scores = judgeLM.score(adv_prompt_list,target_response_list)
+  File "/project/judges.py", line 62, in score
+    raw_outputs = self.judge_model.batched_generate(convs_list,
+  File "/project/language_models.py", line 126, in batched_generate
+    return [self.generate(conv, max_n_tokens, temperature, top_p) for conv in convs_list]
+  File "/project/language_models.py", line 126, in <listcomp>
+    return [self.generate(conv, max_n_tokens, temperature, top_p) for conv in convs_list]
+  File "/project/language_models.py", line 114, in generate
+    except openai.error.OpenAIError as e:
+AttributeError: module 'openai' has no attribute 'error'
+Traceback (most recent call last):
+  File "/project/language_models.py", line 104, in generate
+    response = openai.Completion.create(
+  File "/opt/conda/lib/python3.10/site-packages/openai/lib/_old_api.py", line 39, in __call__
+    raise APIRemovedInV1(symbol=self._symbol)
+openai.lib._old_api.APIRemovedInV1:
+You tried to access openai.Completion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface.
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/project/main.py", line 188, in <module>
+    main(args)
+  File "/project/main.py", line 50, in main
+    judge_scores = judgeLM.score(adv_prompt_list,target_response_list)
+  File "/project/judges.py", line 62, in score
+    raw_outputs = self.judge_model.batched_generate(convs_list,
+  File "/project/language_models.py", line 126, in batched_generate
+    return [self.generate(conv, max_n_tokens, temperature, top_p) for conv in convs_list]
+  File "/project/language_models.py", line 126, in <listcomp>
+    return [self.generate(conv, max_n_tokens, temperature, top_p) for conv in convs_list]
+  File "/project/language_models.py", line 114, in generate
+    except openai.error.OpenAIError as e:
+AttributeError: module 'openai' has no attribute 'error'
+Finished getting target responses.

@@ -6,6 +6,7 @@ import torch
 import gc
 from typing import Dict, List
 import google.generativeai as palm
+from openai import AzureOpenAI
 
 
 class LanguageModel():
@@ -101,20 +102,47 @@ class GPT(LanguageModel):
         output = self.API_ERROR_OUTPUT
         for _ in range(self.API_MAX_RETRY):
             try:
-                response = openai.ChatCompletion.create(
-                            model = self.model_name,
-                            messages = conv,
-                            max_tokens = max_n_tokens,
-                            temperature = temperature,
-                            top_p = top_p,
-                            request_timeout = self.API_TIMEOUT,
-                            )
-                output = response["choices"][0]["message"]["content"]
+                # if self.model_name == "gpt-4"
+                client = AzureOpenAI(
+                    azure_endpoint = "https://gcrendpoint.azurewebsites.net", 
+                    api_key=os.getenv("AZURE_OPENAI_KEY"),  
+                    api_version="2024-02-15-preview"
+                )
+                # print(self.model_name)
+                # print()
+                # print("\nMessages being passed to the API:")
+                # import pprint
+                # pprint.pprint(conv)
+                # print()  # Adding an extra newline for better separation
+                response = client.chat.completions.create(
+                    model=self.model_name, # model = "deployment_name"
+                    messages = conv,
+                    temperature=0.7,
+                    max_tokens=800,
+                    top_p=0.95,
+                    frequency_penalty=0,
+                    presence_penalty=0,
+                    stop=None
+                )
+                # response = openai.Completion.create(
+                #             model = self.model_name,
+                #             messages = conv,
+                #             max_tokens = max_n_tokens,
+                #             temperature = temperature,
+                #             top_p = top_p,
+                #             request_timeout = self.API_TIMEOUT,
+                #             )
+                output = response.choices[0].message.content
                 break
-            except openai.error.OpenAIError as e:
-                print(type(e), e)
+            except openai.APIError as e:
+                print(f"APIError encountered: {e}")
                 time.sleep(self.API_RETRY_SLEEP)
-        
+            except openai.OpenAIError as e:
+                print(f"OpenAIError encountered: {e}")
+                time.sleep(self.API_RETRY_SLEEP)
+            except Exception as e:
+                print(f"Unexpected error: {type(e)}, {e}")
+                time.sleep(self.API_RETRY_SLEEP)        
             time.sleep(self.API_QUERY_SLEEP)
         return output 
     

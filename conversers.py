@@ -171,7 +171,7 @@ class TargetLM():
 
 def load_indiv_model(model_name, device=None):
     model_path, template = get_model_path_and_template(model_name)
-    if model_name in ["gpt-3.5-turbo", "gpt-4"]:
+    if model_name in ["gpt-35-turbo", "gpt-4"]:
         lm = GPT(model_name)
     elif model_name in ["claude-2", "claude-instant-1"]:
         lm = Claude(model_name)
@@ -181,7 +181,8 @@ def load_indiv_model(model_name, device=None):
         model = AutoModelForCausalLM.from_pretrained(
                 model_path, 
                 torch_dtype=torch.float16,
-                low_cpu_mem_usage=True,device_map="auto").eval()
+                low_cpu_mem_usage=True,device_map="cuda",
+                ).eval()
 
         tokenizer = AutoTokenizer.from_pretrained(
             model_path,
@@ -207,9 +208,9 @@ def get_model_path_and_template(model_name):
             "path":"gpt-4",
             "template":"gpt-4"
         },
-        "gpt-3.5-turbo": {
-            "path":"gpt-3.5-turbo",
-            "template":"gpt-3.5-turbo"
+        "gpt-35-turbo": {
+            "path":"gpt-35-turbo",
+            "template":"gpt-35-turbo"
         },
         "vicuna":{
             "path":VICUNA_PATH,
