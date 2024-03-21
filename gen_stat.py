@@ -88,8 +88,8 @@ def process_directory(dir_path):
         if os.path.isdir(full_entry_path):
             # Process this directory if it's a first-level subfolder
             process_yaml_and_log(full_entry_path)
-    for file in os.listdir(dir_path):
-        print(f"Found file: {file} in directory: {dir_path}")
+    # for file in os.listdir(dir_path):
+        # print(f"Found file: {file} in directory: {dir_path}")
 
 def walk_through_wandb_folders(base_dir):
     """
@@ -138,6 +138,6 @@ if __name__ == "__main__":
                 # Initialize success and total counts to 0
                 model_stats[attack][target][judge] = {'success': 0, 'total': 0, 'num_que': 0}
 
-    base_dir = "/home/v-hazhong/Projects/JailbreakingLLMs/wandb"  # Change this to your wandb folder path
+    base_dir = "/home/v-hazhong/Projects/Jailbreak-in-twenty-queries/wandb"  # Change this to your wandb folder path
     process_directory(base_dir)
     display_model_stats(model_stats)
